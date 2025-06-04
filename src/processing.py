@@ -7,6 +7,11 @@ def filter_by_state(user_list, state='EXECUTED'):
     return result
 
 
+def sort_by_date(user_list, decreasing=True):
+    """Функция принимает список словарей и сортирует по date(по умолчанию по убыванию)"""
+    return sorted(user_list,key=lambda x: x.get("date"),reverse= decreasing)
+
+
 if __name__ == '__main__':
     user_list = [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
                  {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'},
@@ -15,3 +20,7 @@ if __name__ == '__main__':
     print(filter_by_state(user_list))
     print(filter_by_state(user_list,'CANCELED'))
     print(filter_by_state(user_list,"abc"))
+
+
+    print(sort_by_date(user_list))
+    print(sort_by_date(user_list,False))
